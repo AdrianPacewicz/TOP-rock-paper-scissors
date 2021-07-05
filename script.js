@@ -59,22 +59,30 @@ function playRound(playerSelection, computerSelection) {
             }
         }
     }
-
-
     return result;
 }
 
 function game() {
-    let finish = 0;
     let scorePlayer = 0;
     let scoreComputer = 0;
-    while (finish == 0) {
+    for (let i = 0; i < 5 ; i++) {
+        let playerSelection = prompt("Input your play (rock / paper / scissors)");
+        let computerSelection = computerPlay();
         let result = playRound(playerSelection, computerSelection)
-
+        console.log(result);
+        if (result.includes("Win")){
+            scorePlayer++;
+        } else if (result.includes("Lose")) {
+            scoreComputer++;
+        }
     }
-    
+    if (scorePlayer > scoreComputer) {
+        return "You win the game! :D\nFinal result: P:" + scorePlayer + " - C:" + scoreComputer;
+    } else if (scoreComputer > scorePlayer) {
+        return "You lose the game! :(\nFinal result: P:" + scorePlayer + " - C:" + scoreComputer;
+    } else {
+        return "Tied game.\nFinal result: P:" + scorePlayer + " - C:" + scoreComputer;
+    }
 }
 
-const playerSelection = prompt("Input your play (rock / paper / scissors)");
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+console.log(game());
