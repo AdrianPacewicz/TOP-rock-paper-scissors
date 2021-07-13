@@ -85,4 +85,12 @@ function game() {
     }
 }
 
-console.log(game());
+function btnClick() {
+    const msg = document.querySelector("#p-message");
+    msg.innerHTML = playRound(this.value, computerPlay());
+}
+
+const btns = document.querySelectorAll(".btnOption");
+btns.forEach (btn => btn.addEventListener('click', btnClick));
+
+//console.log(game());

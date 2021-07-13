@@ -1,13 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <p>Console script web</p>
-    <script src="script.js"></script>
+  <header>
+    <h1>Rock - Paper - Scissors</h1>
+  </header>
+  <div id="main">
+    <div id="score">
+      <div class="players" id="player">
+        <p>Player</p>
+      </div>
+      <div class="players">
+        <p>vs</p>
+      </div>
+      <div class="players" id="cpu">
+        <p>CPU</p>
+      </div>
+      <div class="points" id="score-player">
+        <p>0</p>
+      </div>
+      <div class="points">
+        <p>-</p>
+      </div>
+      <div class="points" id="score-cpu">
+        <p>0</p>
+      </div>
+    </div>
+    <div id="section-options">
+      <div class="options">
+        <button id="btnRock" class="btnOption" value="rock">Rock</button>
+      </div>
+      <div class="options">
+        <button id="btnPaper" class="btnOption" value="paper">Paper</button>
+      </div>
+      <div class="options">
+        <button id="btnScissors" class="btnOption" value="scissors">Scissors</button>
+      </div>
+    </div>
+    <div id="message">
+      <p id="p-message"></p>
+      <p id="final-message"></p>
+    </div>
+  </div>
+  <div id="reset">
+    <button>Reset</button>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
