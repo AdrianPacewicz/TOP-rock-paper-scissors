@@ -102,6 +102,12 @@ function verifyGameOver() {
     }
 }
 
+function checkDisabled(btn) {
+    if (btn.disabled === true) {
+        changeState(btn);
+    }
+}
+
 function changeState(btn) {
     if (btn.disabled == false) {
         btn.disabled = true;
@@ -138,7 +144,8 @@ function resetClick() {
     scorePlayerP.innerHTML = 0;
     scoreComputerP.innerHTML = 0;
     finalMsgP.innerHTML = "";
-    btns.forEach(btn => changeState(btn));
+    
+    btns.forEach(btn => checkDisabled(btn));
 }
 
 const btns = document.querySelectorAll(".btnOption");
