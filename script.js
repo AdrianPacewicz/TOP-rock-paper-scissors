@@ -1,3 +1,6 @@
+let scorePlayer = 0;
+let scoreComputer = 0;
+
 function computerPlay() {
     let number = Math.floor(Math.random() * 3);
     switch (number) {
@@ -63,8 +66,6 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-    let scorePlayer = 0;
-    let scoreComputer = 0;
     for (let i = 0; i < 5 ; i++) {
         let playerSelection = prompt("Input your play (rock / paper / scissors)");
         let computerSelection = computerPlay();
@@ -85,12 +86,65 @@ function game() {
     }
 }
 
+function verifyGameOver() {
+    if (scorePlayer == 5 || scoreComputer == 5 ) {
+        console.log(scorePlayer + " - " + scoreComputer);
+        const finalMsgP = document.getElementById("final-message");
+        finalMsgP
+        if (scorePlayer === 5) {
+            finalMsgP.innerHTML = "You win the game! :D";
+            finalMsgP.style.color = "rgb(92, 246, 74)";
+        } else {
+            finalMsgP.innerHTML = "You lose the game! :(";
+            finalMsgP.style.color = "rgb(140, 112, 81)";
+        }
+        btns.forEach(btn => changeState(btn));
+    }
+}
+
+function changeState(btn) {
+    if (btn.disabled == false) {
+        btn.disabled = true;
+    } else {
+        btn.disabled = false;
+    }
+}
+
+
 function btnClick() {
-    const msg = document.querySelector("#p-message");
-    msg.innerHTML = playRound(this.value, computerPlay());
+    const msg = document.getElementById("p-message");
+    const scorePlayerP = document.getElementById("score-player");
+    const scoreComputerP = document.getElementById("score-computer");
+    const result = playRound(this.value, computerPlay());
+    msg.innerHTML = result;
+    if (result.includes("Win")){
+        scorePlayer++;
+        scorePlayerP.innerHTML = scorePlayer;
+    } else if (result.includes("Lose")) {
+        scoreComputer++;
+        scoreComputerP.innerHTML = scoreComputer;
+    }
+    verifyGameOver();
+}
+
+function resetClick() {
+    scorePlayer = 0;
+    scoreComputer = 0;
+    const msg = document.getElementById("p-message");
+    const scorePlayerP = document.getElementById("score-player");
+    const scoreComputerP = document.getElementById("score-computer");
+    const finalMsgP = document.getElementById("final-message");
+    msg.innerHTML = "";
+    scorePlayerP.innerHTML = 0;
+    scoreComputerP.innerHTML = 0;
+    finalMsgP.innerHTML = "";
+    btns.forEach(btn => changeState(btn));
 }
 
 const btns = document.querySelectorAll(".btnOption");
 btns.forEach (btn => btn.addEventListener('click', btnClick));
+
+const btnReset = document.getElementById("reset");
+btnReset.addEventListener('click', resetClick);
 
 //console.log(game());
