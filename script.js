@@ -117,7 +117,7 @@ function changeState(btn) {
 }
 
 
-function btnClick() {
+function btnClick(e) {
     const msg = document.getElementById("p-message");
     const scorePlayerP = document.getElementById("score-player");
     const scoreComputerP = document.getElementById("score-computer");
@@ -133,7 +133,7 @@ function btnClick() {
     verifyGameOver();
 }
 
-function resetClick() {
+function resetClick(e) {
     scorePlayer = 0;
     scoreComputer = 0;
     const msg = document.getElementById("p-message");
@@ -144,7 +144,6 @@ function resetClick() {
     scorePlayerP.innerHTML = 0;
     scoreComputerP.innerHTML = 0;
     finalMsgP.innerHTML = "";
-    
     btns.forEach(btn => checkDisabled(btn));
 }
 
